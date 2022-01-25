@@ -11,14 +11,23 @@ terraform {
 
 provider "aws" {
   profile = "default"
-  region  = "eu-north-1"
+  region  = var.region
 }
 
-resource "aws_instance" "app_server" {
-  ami           = "ami-0b79d00e41ebf0a9b"
+resource "aws_key_pair" "ssh_auth" {
+  key_name = var.keypair
+  public_key = file("../ssh-keys/aws-laastine.pub")
+}
+
+resource "aws_instance" "mumble-server" {
+  ami           = var.ami_id
   instance_type = "t3.micro"
+  key_name = var.keypair
+  security_groups = [aws_security_group.default-sec.id]
 
   tags = {
     Name = var.instance_name
   }
+
+  subnet_id = aws_subnet.subnet_one.id
 }

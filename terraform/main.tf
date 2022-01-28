@@ -15,14 +15,14 @@ provider "aws" {
 }
 
 resource "aws_key_pair" "ssh_auth" {
-  key_name = var.keypair
+  key_name   = var.keypair
   public_key = file("../ssh-keys/aws-laastine.pub")
 }
 
 resource "aws_instance" "mumble-server" {
-  ami           = var.ami_id
-  instance_type = "t3.micro"
-  key_name = var.keypair
+  ami             = var.ami_id
+  instance_type   = "t3.micro"
+  key_name        = var.keypair
   security_groups = [aws_security_group.default-sec.id]
 
   tags = {

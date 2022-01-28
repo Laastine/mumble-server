@@ -1,0 +1,7 @@
+---
+  - name: Install murmur (mumble-server)
+    apt:
+      name: "mumble-server"
+      state: latest
+      update_cache: yes
+    become: true

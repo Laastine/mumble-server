@@ -19,12 +19,12 @@ resource "aws_route_table" "route-table-default-env" {
 }
 
 resource "aws_route_table_association" "subnet-association" {
-  subnet_id = aws_subnet.subnet_one.id
+  subnet_id      = aws_subnet.subnet_one.id
   route_table_id = aws_route_table.route-table-default-env.id
 }
 
 resource "aws_subnet" "subnet_one" {
-  cidr_block = cidrsubnet(aws_vpc.outer-district.cidr_block, 3, 1)
-  vpc_id     = aws_vpc.outer-district.id
+  cidr_block        = cidrsubnet(aws_vpc.outer-district.cidr_block, 3, 1)
+  vpc_id            = aws_vpc.outer-district.id
   availability_zone = var.region_az
 }

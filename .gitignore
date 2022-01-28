@@ -2,3 +2,5 @@ terraform/.*
 terraform/terraform.tfstate*
 ssh-keys/*
 /terraform/vars.tfvars
+ansible/install-mumble-server.sh
+ansible/mumble-server.ini

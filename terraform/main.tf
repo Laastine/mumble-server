@@ -23,7 +23,8 @@ resource "aws_instance" "mumble-server" {
   ami             = var.ami_id
   instance_type   = "t3.micro"
   key_name        = var.keypair
-  security_groups = [aws_security_group.default-sec.id]
+  associate_public_ip_address = true
+  security_groups = [aws_security_group.ssh-mumble-security-group.id]
 
   tags = {
     Name = var.instance_name

@@ -39,3 +39,36 @@ variable "vpc_cidr_block" {
   default = "10.0.0.0/16"
 }
 
+variable "sg_ingress_rules" {
+  type = map(object({
+    from_port   = number
+    to_port     = number
+    protocol    = string
+    cidr_block  = list(string)
+    description = string
+  }))
+  default     = {
+    ssh-protocol = {
+      from_port   = 22
+      to_port     = 22
+      protocol    = "tcp"
+      cidr_block  = ["0.0.0.0/0"]
+      description = "ssh"
+    },
+    mumble-tcp-protocol = {
+      from_port   = 64738
+      to_port     = 64738
+      protocol    = "tcp"
+      cidr_block  = ["0.0.0.0/0"]
+      description = "mumble-tcp"
+    },
+    mumble-udp-protocol = {
+      from_port   = 64738
+      to_port     = 64738
+      protocol    = "udp"
+      cidr_block  = ["0.0.0.0/0"]
+      description = "mumble-udp"
+    }
+  }
+}
+

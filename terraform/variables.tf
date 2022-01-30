@@ -6,7 +6,7 @@ variable "instance_name" {
 
 variable "ami_name" {
   type    = string
-  default = "Alma Linux 8.5"
+  default = "Ubuntu 20.04 LTS"
 }
 
 variable "ami_id" {

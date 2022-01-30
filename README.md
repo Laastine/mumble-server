@@ -1,5 +1,7 @@
 # Mumble-server
 
+Automated mumble-server setup for AWS EC2.
+
 ## Setup
 Install terraform; https://www.terraform.io/downloads <br>
 Install awscli: https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html <br>
@@ -14,4 +16,4 @@ Install ansible: https://docs.ansible.com/ansible/latest/installation_guide/intr
 
 ## Ansible
 
-Run `ansible/install-mumble-server.sh ip ssh-private-key`
+Run `ansible-playbook -i mumble-server.ini mumble-server.yml --private-key="ssh-key-here"`
